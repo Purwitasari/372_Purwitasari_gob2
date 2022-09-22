@@ -12,7 +12,7 @@ func main() {
 
 	person["age"] = "22"
 
-	person["address"] = "Jalan Sudirman"
+	person["address"] = "Jakarta"
 
 	fmt.Println("name:", person["name"])
 	fmt.Println("age:", person["age"])
