@@ -3,6 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("this is my first go program")
-	fmt.Println("this is hello world")
+	fmt.Println("This is my first go program")
+	fmt.Println("This is hello world")
 }

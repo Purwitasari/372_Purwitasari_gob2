@@ -1,0 +1,52 @@
+Batch 2
+149368582100-372
+Purwitasari
+
+21/09/2022
+
+........
+git add . >>> . (titik) digunakan untuk all data (file)  
+git commit -m "update"
+git push
+
+------
+misal hanya menambahkan 1 file
+git add namafile.txt
+git commit -m "update"
+git push
+
+------
+(Condition)
+- If, Else if, Else
+- Switch
+case 1:
+case 2:
+default:
+
+(Looping)
+- For
+- Break : menghentikan proses looping
+
+(Array)
+- Tipe data untuk menyimpan sebuah kumpulan dari data-data
+- %#v : memformat tipe data array dan dapat melihat panjang dari arraynya
+- len : mendapatkan panjang dari array 
+
+(Slice)
+- Append : digunakan untuk menambahkan element Slice
+- Copy : meng-copy seluruh elemen dari Slice
+- String.Repeat : mengulang penulisan string
+
+(Map)
+- Delete : menghapus map atau variabel pada map
+- Value, exist : mendeteksi keberadaan suatu value
+
+(Aliase)
+- Fitur sebagai nama alternative
+- Dapat mendeklarasikan tipe data alias dengan nama yang dibuat sendiri
+
+(String In Depth)
+- Variable[i] : menghasilkan nilai dari byte nya
+- []byte = []byte{..} : menghasilkan kata dari byte
+- utf8.RuneCountInString : merubah string menjadi rune dan mencari panjang karakter
+

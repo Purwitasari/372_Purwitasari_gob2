@@ -4,8 +4,8 @@ import "fmt"
 
 func main() {
 
-	var name string = "Arif"
-	var age int = 23
+	var name string = "Wita"
+	var age int = 22
 
 	// variabel with data type
 	fmt.Println("Nama saya adalah =>", name)
@@ -16,8 +16,8 @@ func main() {
 	fmt.Println()
 
 	//variabel without data type (shot declaration)
-	my_name := "Arif Setiawan"
-	my_age := 23
+	my_name := "Purwitasari Muliawan"
+	my_age := 22
 
 	fmt.Printf("%T, %T", my_name, my_age)
 	fmt.Println()

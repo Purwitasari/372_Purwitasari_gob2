@@ -1,0 +1,49 @@
+Batch 2
+149368582100-372
+Purwitasari
+
+19/09/2022
+
+Web Service merupakan aplikasi penghubung
+
+Catatan :
+- Masukkan ke code share : https://codeshare.io/golangbatch2-001
+Kode Peserta :
+Nama Peserta :
+Suummary :
+Tugas :
+Assigment :
+
+- Instalasi
+VS code
+golang
+
+- Plugins :
+Code Runner
+golang
+Prettier
+
+(Penulisan)
+- fmt.Println : tidak perlu menambahkan spasi setiap kata dan menghasilkan baris baru
+- fmt.Print : perlu menambahkan spasi dan perlu (\n) untuk baris baru
+
+(Komentar)
+- Dapat menggunakan (//)->satu baris atau (/* */) ->banyak baris
+
+(Variable)
+- String : kata
+- Int : angka
+- fmt.Printf : Output berdasarkan flag yang diberikan
+- flag : http://xahlee.info/golang/golang_printf_verbs.html
+
+(Tipe Data)
+- Int : Bilangan cacah (positif)
+- Uint : Bilangan bulat (positif dan negatif)
+- Float : Decimal
+- Bool : True False
+- Zero Value
+Zero value dari string : "" (string kosong)
+Zero value dari bool : false
+Zero value dari tipe numerik non-desimal : 0
+Zero value dari tipe numerik desimal : 0.0
+

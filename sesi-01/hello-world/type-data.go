@@ -4,10 +4,6 @@ import "fmt"
 
 func main() {
 
-	//default type data
-	// var first = 89
-	// var second = -12
-
 	//inisialisai type data
 	var first uint8 = 89
 	var second int8 = -12
@@ -29,9 +25,11 @@ func main() {
 	var message string = "Pagi"
 	fmt.Printf("hello %s \n", message)
 
-	//type data string
-	//deklarasi string juga bisa dengan tanda grave accent/backticks (``)
-	//keistimewaan string yang dideklarasikan menggunakan backtics adalah membuat semua karakter didalamnya tidak diescape
+	/*
+		Type data string
+		Deklarasi string dengan tanda grave accent/backticks (``)
+		dapat membuat semua karakter didalamnya tidak diescape
+	*/
 
 	var my_message = `selamat datang di hactiv8.
 	salam kenal :).
