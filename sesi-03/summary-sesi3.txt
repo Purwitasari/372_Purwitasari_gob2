@@ -4,3 +4,31 @@ Purwitasari
 
 23/09/2022
 
+(Function)
+- func namafunction() {}
+- Jelaskan jenis tipe data pada parameter func jika function menerima sebuah parameter
+- Function Join : menggabungkan nilai-nilai dengan tipe data string yang terdapat pada slice atau array
+- Function variadic : function yang dapat menerima argumen yang tidak terbatas jumlahnya
+
+(Closure)
+- Closure : anonymous function yang dapat disimpan sebagai sebuah variable dan dapat dijadikan sebagai return
+- isPalindrome : mendeteksi apakah kata yang dimasukkan palindrome(Contoh: katak) atau bukan
+
+(Pointer)
+- variable untuk menyimpan alamat memori variable lainnya
+- changeValue : mengubah nilai variable
+- Kita dapat mendapatkan alamat memori dari variable biasa dengan menggunakan tanda ampersand &
+- Kita dapat mendapatkan nilai asli dari variable pointer dengan cara menggunakan tanda asterisk *
+
+(Struct)
+- tipe data berupa kumpulan dari berbagai macam property/field dan juga method
+- Urutan :
+    1. Penulisan keyword type
+    2. Nama dari struct
+    3. Penulisan keyword struct
+    4. Kemudian di ikuti tanda kurung kurawal{}
+    5. Mendefinisikan field yang di inginkan
+
+(Exported-Unexported)
+- Function init akan dieksekusi terlebih dahulu sebelum function main
+- Jalankan file dengan perintah go run *.go
