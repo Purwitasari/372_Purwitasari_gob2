@@ -1,0 +1,16 @@
+Batch 2
+149368582100-372
+Purwitasari
+
+26/09/2022
+
+(Interface)
+- Interface menggunakan kurung kurawal {}
+-
+
+(Empty Interface)
+-
+-
+
+(Reflect)
+-
