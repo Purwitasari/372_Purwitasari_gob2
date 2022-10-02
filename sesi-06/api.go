@@ -24,11 +24,19 @@ var PORT = ":8081"
 
 func main() {
 
+	http.HandleFunc("/", greet)
 	http.HandleFunc("/employees", getEmployees)
 	http.HandleFunc("/employee", createEmployee)
 
 	fmt.Println("Application is listening on port", PORT)
 	http.ListenAndServe(PORT, nil)
+
+}
+
+func greet(w http.ResponseWriter, r *http.Request) {
+
+	msg := "Employees Applicstion"
+	fmt.Fprint(w, msg)
 
 }
 
@@ -42,33 +50,6 @@ func getEmployees(w http.ResponseWriter, r *http.Request) {
 	}
 	http.Error(w, "Invalid method", http.StatusBadRequest)
 }
-
-/*
-
-Hasil
-
-[
-    {
-        "ID": 1,
-        "Name": "Airell",
-        "Age": 23,
-        "Division": "IT"
-       "Division": "IT"
-    }
-    {
-        "ID": 2,
-        "Name": "Nnda",
-        "Age": 23,
-       "Division": "Finance"
-    }
-    {
-        "ID": 3,
-        "Name": "Milo",
-        "Age": 23,
-       "Division": "IT"
-   }
-]
-*/
 
 func createEmployee(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -101,3 +82,30 @@ func createEmployee(w http.ResponseWriter, r *http.Request) {
 	http.Error(w, "Invalid method", http.StatusBadRequest)
 
 }
+
+/*
+
+Hasil
+
+[
+    {
+        "ID": 1,
+        "Name": "Airell",
+        "Age": 23,
+        "Division": "IT"
+       "Division": "IT"
+    }
+    {
+        "ID": 2,
+        "Name": "Nnda",
+        "Age": 23,
+       "Division": "Finance"
+    }
+    {
+        "ID": 3,
+        "Name": "Milo",
+        "Age": 23,
+       "Division": "IT"
+   }
+]
+*/
