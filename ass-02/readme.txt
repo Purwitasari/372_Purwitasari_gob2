@@ -8,8 +8,8 @@ Paduan :
 2. Buka VS Code dan open folder ass-02
 3. Buka aplikasi XAMPP dan jalankan MySql
 4. Buka localhost/phpmyadmin/ dan buat database dengan nama "ass_godb"
-3. Masuk ke terminal di vs code kemudian ketik "go run main.go"
-4. Untuk mengakses data dapat menggunakan link Postman dibawah
+5. Masuk ke terminal di vs code kemudian ketik "go run main.go"
+6. Untuk mengakses data dapat menggunakan link Postman dibawah
 
 Creat Data : http://localhost:1212/orders 
 body: customer_name, item_code, description, quantity
