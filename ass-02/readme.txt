@@ -1,7 +1,7 @@
 Biodata 
 Kode Peserta : 149368582100-372
 Nama		 : Purwitasari
-Link Github  : 
+Link Github  : https://github.com/Purwitasari/372_Purwitasari_gob2/tree/main/ass-02
 
 Paduan : 
 1. Download folder ass-02 dari Github diatas
