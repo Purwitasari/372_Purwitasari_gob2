@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content=""IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water and Wind Status</title>
+</head>
+<body>
+    <div>
+        <table border="1">
+            <tr>
+                <th>Water (m)</th>
+                <th>Water Status</th>
+                <th>Wind</th>
+                <th>Wind Status (m/s)</th>
+            </tr>
+            <tr>
+                <td><p id="water"></p></td>
+                <td><p id="msgWater"></p></td>
+                <td><p id="Wind"></p></td>
+                <td><p id="msgWind"></p></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    const api_url = "http://localhost:1212/AutoReload/"
+  
+   async function get_data(a) { 
+       const response = await fetch(a)
+       var data = await response.json()
+       var water = data["status"]["Water"]
+       var wind = data["status"]["Wind"]
+       var msgWater = data["status"]["WaterStatus"]
+       var msgWind = data["status"]["WindStatus"]
+       
+       document.getElementById("water").innerHTML = water;
+       document.getElementById("wind").innerHTML = wind; 
+       document.getElementById("msgWater").innerHTML = msgWater;
+       document.getElementById("msgWind").innerHTML = msgWind;
+       setTimeout(() => get_data(a), 1000*5)
+       
+  }
+  
+  get_data(api_url);
+</script>
