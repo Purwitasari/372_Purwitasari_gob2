@@ -12,6 +12,6 @@ Paduan :
 6. Untuk mengakses data dapat menggunakan link Postman dibawah
 
 Creat Data : http://localhost:1212/AutoReload 
-(Data tergenerated otomatis, hanya klik "send")
+(Body: water, wind)
 
-Get All Data : http://localhost:1212/AutoReload/All/
+Get All Data : http://localhost:1212/AutoReload/last/
