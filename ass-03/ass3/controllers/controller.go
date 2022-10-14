@@ -14,6 +14,10 @@ type Data struct {
 }
 
 func (idb *InDB) CreateData(c *gin.Context) {
+	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "*")
+	c.Writer.Header().Set("Access-Control-Allow-Methods", "POST")
 	var (
 		reload structs.Reload
 		result gin.H
@@ -52,6 +56,10 @@ func (idb *InDB) CreateData(c *gin.Context) {
 }
 
 func (idb *InDB) Getdatas(c *gin.Context) {
+	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+	c.Writer.Header().Set("Access-Control-Allow-Headers", "*")
+	c.Writer.Header().Set("Access-Control-Allow-Methods", "GET")
 	var (
 		reload structs.Reload
 		all    []structs.Reload
