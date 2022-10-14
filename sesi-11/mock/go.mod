@@ -1,4 +1,4 @@
-module hello-mock
+module mock
 
 go 1.19
 

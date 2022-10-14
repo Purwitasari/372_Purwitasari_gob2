@@ -1,8 +1,8 @@
 package service
 
 import (
-	"hello-mock/entity"
-	"hello-mock/repository"
+	"mock/entity"
+	"mock/repository"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

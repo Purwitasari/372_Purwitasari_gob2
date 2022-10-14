@@ -2,8 +2,8 @@ package service
 
 import (
 	"errors"
-	"hello-mock/entity"
-	"hello-mock/repository"
+	"mock/entity"
+	"mock/repository"
 )
 
 type ProductService struct {

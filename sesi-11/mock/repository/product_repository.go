@@ -1,6 +1,6 @@
 package repository
 
-import "hello-mock/entity"
+import "mock/entity"
 
 type ProductRepository interface {
 	FindById(id string) *entity.Product
