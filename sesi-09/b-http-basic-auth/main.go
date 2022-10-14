@@ -17,15 +17,61 @@ type Student struct {
 	Grade int32
 }
 
+func ActionStudent(w http.ResponseWriter, r *http.Request) {
+	if !Auth(w, r) {
+		return
+	}
+	if !AllowOnlyGET(w, r) {
+		return
+	}
+
+	if id := r.URL.Query().Get("id"); id != "" {
+		OutputJSON(w, SelectStudent(id))
+		return
+	}
+	OutputJSON(w, GetStudents())
+}
+
+func OutputJSON(w http.ResponseWriter, o interface{}) {
+	res, err := json.Marshal(o)
+	if err != nil {
+		w.Write([]byte(err.Error()))
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(res)
+
+}
+func main() {
+	http.HandleFunc("/student", ActionStudent)
+
+	server := new(http.Server)
+	server.Addr = ":9000"
+
+	fmt.Println("server started at localhost:9000")
+	server.ListenAndServe()
+}
+
 func Auth(w http.ResponseWriter, r *http.Request) bool {
+
 	username, password, ok := r.BasicAuth()
 	if !ok {
 		w.Write([]byte(`something went wrong`))
 		return false
 	}
+
 	isValid := (username == USERNAME) && (password == PASSWORD)
 	if !isValid {
 		w.Write([]byte(`wrong username/password`))
+		return false
+	}
+
+	return true
+}
+
+func AllowOnlyGET(w http.ResponseWriter, r *http.Request) bool {
+	if r.Method != "GET" {
+		w.Write([]byte("only get is allowed"))
 		return false
 	}
 	return true
@@ -41,51 +87,12 @@ func SelectStudent(id string) *Student {
 			return each
 		}
 	}
+
 	return nil
 }
 
-func ActionStudent(w http.ResponseWriter, r *http.Request) {
-	if !Auth(w, r) {
-		return
-	}
-	if !AllowOnlyGet(w, r) {
-		return
-	}
-	if id != r.URL.Query().Get("id"); id != "" {
-		OutputJSON(w, SelectStudent(id))
-		return
-	}
-	OutputJSON(w, GetStudents())
-}
-
-func AllowOnlyGet(w http.ResponsWritter, r *http.Request) bool {
-	if r.Method != "GET" {
-		w.Write([]byte("Only GET is allowed"))
-		return false
-	}
-	return true
-}
-func OutputJSON(w http.ResponseWriter, t *http.Request) {
-	res, err := json.Marshal(o)
-	if err != nil {
-		w.Write([]byte(err.Error()))
-		return
-	}
-	w.Header().Set("Content-type", "application/json")
-	w.Write(res)
-}
-
 func init() {
-	students = append(students, &Student{Id: "s001", Name: "bourne", Grade: 3})
-	students = append(students, &Student{Id: "s002", Name: "ethan", Grade: 3})
-	students = append(students, &Student{Id: "s003", Name: "wick", Grade: 2})
-}
-func main() {
-	http.HandleFunc("/student", ActionStudent)
-	server := new(http.Server)
-	server.Addr = "9000"
-
-	fmt.Println("server started at localhost:9000")
-	server.ListenAndServe()
-
+	students = append(students, &Student{Id: "s001", Name: "bourne", Grade: 2})
+	students = append(students, &Student{Id: "s002", Name: "ethan", Grade: 4})
+	students = append(students, &Student{Id: "s003", Name: "wick", Grade: 3})
 }
