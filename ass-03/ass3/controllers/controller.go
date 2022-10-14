@@ -2,73 +2,45 @@ package controllers
 
 import (
 	"ass-03/ass3/structs"
-	"math/rand"
 	"net/http"
-	"time"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
 type Data struct {
-	Water       int    `json:"water"`
-	WaterStatus string `json:"water_status"`
-	Wind        int    `json:"wind"`
-	WindStatus  string `json:"wind_status"`
+	Water int `json:"water"`
+	Wind  int `json:"wind"`
 }
 
-func (idb *InDB) GetData(c *gin.Context) {
+func (idb *InDB) CreateData(c *gin.Context) {
 	var (
 		reload structs.Reload
 		result gin.H
 	)
 
-	rand.Seed(time.Now().UnixNano())
-	min := 1
-	max := 100
-	randomdata1 := (rand.Intn(max-min+1) + min)
+	waterS := c.PostForm("water")
+	windS := c.PostForm("wind")
 
-	reload.Water = randomdata1
+	water, _ := strconv.Atoi(waterS)
+	wind, _ := strconv.Atoi(windS)
 
-	randomdata2 := (rand.Intn(max-min+1) + min)
-	reload.Wind = randomdata2
-
-	if reload.Water <= 5 {
-		status1 := "Aman"
-		reload.WaterStatus = status1
-	} else if reload.Water <= 8 && reload.Water >= 6 {
-		status1 := "Siaga"
-		reload.WaterStatus = status1
-	} else {
-		status1 := "Bahaya"
-		reload.WaterStatus = status1
-	}
-
-	if reload.Wind <= 6 {
-		status2 := "Aman"
-		reload.WindStatus = status2
-	} else if reload.Water <= 15 && reload.Water >= 7 {
-		status2 := "Siaga"
-		reload.WindStatus = status2
-	} else {
-		status2 := "Bahaya"
-		reload.WindStatus = status2
-	}
+	reload.Water = water
+	reload.Wind = wind
 
 	var data []Data
 
-	itemdata := Data{
-		Water:       reload.Water,
-		WaterStatus: reload.WaterStatus,
-		Wind:        reload.Wind,
-		WindStatus:  reload.WindStatus,
+	datainput := Data{
+		Water: reload.Water,
+		Wind:  reload.Wind,
 	}
 
-	data = append(data, itemdata)
+	data = append(data, datainput)
 
 	err := idb.DB.Create(&reload).Error
 	if err != nil {
 		result = gin.H{
-			"result": "Failed to Creat data",
+			"result": "Failed to Create Data",
 		}
 		c.JSON(http.StatusNoContent, result)
 	} else {
@@ -81,21 +53,47 @@ func (idb *InDB) GetData(c *gin.Context) {
 
 func (idb *InDB) Getdatas(c *gin.Context) {
 	var (
-		alldata []structs.Reload
-		result  gin.H
+		reload structs.Reload
+		all    []structs.Reload
+		result gin.H
 	)
 
-	idb.DB.Find(&alldata)
+	idb.DB.Find(&all).Take(&all).Last(&all)
 
-	if len(alldata) <= 0 {
+	if len(all) <= 0 {
 		result = gin.H{
 			"message": "Data Not Found",
 		}
 		c.JSON(http.StatusNotFound, result)
 	} else {
+		idb.DB.Find(&reload).Take(&reload).Last(&reload)
 
+		var water_status, wind_status string
+
+		alldata := Data{
+			Water: reload.Water,
+			Wind:  reload.Wind,
+		}
+
+		if alldata.Water <= 5 {
+			water_status = "Aman"
+		} else if alldata.Water <= 8 && alldata.Water >= 6 {
+			water_status = "Siaga"
+		} else {
+			water_status = "Bahaya"
+		}
+
+		if alldata.Wind <= 6 {
+			wind_status = "Aman"
+		} else if alldata.Wind <= 15 && alldata.Wind >= 7 {
+			wind_status = "Siaga"
+		} else {
+			wind_status = "Bahaya"
+		}
 		result = gin.H{
-			"status": alldata,
+			"status":      alldata,
+			"WaterStatus": water_status,
+			"WindStatus":  wind_status,
 		}
 		c.JSON(http.StatusOK, result)
 	}
