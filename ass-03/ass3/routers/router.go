@@ -16,7 +16,7 @@ func StartServer() *gin.Engine {
 	router := gin.Default()
 
 	router.POST("/AutoReload", inDB.CreateData)
-	router.GET("/AutoReload/last", inDB.Getdatas)
+	router.GET("/AutoReload/Last", inDB.Getdatas)
 
 	return router
 }
